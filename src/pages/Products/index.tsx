@@ -29,7 +29,7 @@ const Products = () => {
         <Redirect to="/"/>
       }
       {
-        products &&
+        products !== undefined &&
         products.map((item:any)=>(
           <div key={item.id}>
             <h1>{item.title}</h1>
@@ -39,6 +39,7 @@ const Products = () => {
           </div>
         ))
       }
+      {token===null && <Redirect to="/"/>}
     </>
   )
 }

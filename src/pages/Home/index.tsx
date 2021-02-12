@@ -16,7 +16,8 @@ const Home = () => {
     }
   
     axios.post('http://localhost:4000/users', request)
-      .then(response => {localStorage.setItem("token", response.data.accessToken)
+      .then(response => {
+      localStorage.setItem("token", response.data.accessToken)
       setAutorized(true)
     })
   }
@@ -29,15 +30,15 @@ const Home = () => {
       </Helmet>
       <main>
         <h1>Cadastro</h1>
-        <form action="">
+        <div>
           <input type="text" placeholder="email" ref={inputEmail}/>
           <input type="password" placeholder="senha" ref={inputPassword}/>
           <button onClick={Cadastrar}>Cadatrar</button>
           {
-            authorized === true &&
+            authorized &&
             <Redirect to="/produtos"/>
           }
-        </form>
+        </div>
       </main>
     </>
   )
